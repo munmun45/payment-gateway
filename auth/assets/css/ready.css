@@ -5234,6 +5234,7 @@ body {
   padding-top: 30px;
   padding-bottom: 30px;
   position: relative;
+  border-radius: 10px;
 }
 .row-card-no-pd .card {
   margin-bottom: 0px;
@@ -5601,6 +5602,8 @@ body {
 
 .table-head-bg-primary {
   border: 1px solid #1D62F0 !important;
+  border-radius: 10px 10px 0px 0px;
+  overflow: hidden;
 }
 
 .table-head-bg-info {
@@ -5629,6 +5632,7 @@ body {
   background: #1D62F0 !important;
   color: #ffffff !important;
   border: 0px !important;
+  
 }
 
 .table-head-bg-info thead th, .table-striped-bg-info tbody tr:nth-of-type(odd) {
@@ -6671,6 +6675,12 @@ body {
   .profile-pic span {
     display: none;
   }
+}
+
+
+
+div.dataTables_wrapper div.dataTables_filter{
+  display: none;
 }
 
 /*# sourceMappingURL=ready.css.map */
