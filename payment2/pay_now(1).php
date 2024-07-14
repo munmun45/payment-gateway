@@ -130,10 +130,10 @@ $server_url = "$redirect_url?order_id=$order_id";
 $cxrkalwaremark = $res_p[0]['byteTransactionId'];  //remark
 
 if($redirect_url==''){
-$redirect_url='https://qr.webupipay.online/';    
+$redirect_url='https://munmunmaharana.in/payment/';    
 }
 
- $txn_data = file_get_contents('https://qr.webupipay.online/phnpe/user_txn.php?no='.$user_token.''); 
+ $txn_data = file_get_contents('https://munmunmaharana.in/payment/phnpe/user_txn.php?no='.$user_token.''); 
   $txn_data= substr("$txn_data",6);
 
     //  $json0=json_decode($txn_data,1);
@@ -198,7 +198,7 @@ function upiCountdown(elm, minute, second, url) {
               text: 'Transaction Timeout!',
               icon: 'error'
             });
-            window.location.href = "https://qr.webupipay.online/";
+            window.location.href = "https://munmunmaharana.in/payment/";
         }
         document.getElementById(elm).innerHTML = m + ":" + s;
         setTimeout(startTimer, 1000);
@@ -216,7 +216,7 @@ upiCountdown("timeout", 5, 0, location.href);
 function check() {
     $.ajax({
         type: 'post',
-        url: 'https://qr.webupipay.online/payment2/payment_status.php',
+        url: 'https://munmunmaharana.in/payment/payment2/payment_status.php',
         data: 'byte_order_status=<?php echo $cxrmerchantTransactionId?>',
         success: function (data) {
             if(data == 'success'){

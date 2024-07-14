@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,13 +20,13 @@
             margin: 0;
             font-family: Arial, sans-serif;
         }
-        
+
         .qr-wrapper {
             padding: 10px;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 12px;
         }
-        
+
         .qr-container {
             background: #fff;
             padding: 20px;
@@ -34,7 +35,7 @@
             width: 300px;
             border-radius: 8px;
         }
-        
+
         .qr-title {
             background: #343a40;
             color: #fff;
@@ -43,30 +44,33 @@
             border-top-left-radius: 8px;
             border-top-right-radius: 8px;
         }
-        
+
         .qr-code {
             padding: 10px;
             margin: 20px auto;
             display: inline-block;
-            border: 4px solid; /* Required for gradient borders */
+            border: 4px solid;
+            /* Required for gradient borders */
             border-image-slice: 1;
             border-width: 4px;
-            border-image-source: linear-gradient(45deg, #f3ec78, #af4261); /* Gradient border */
+            border-image-source: linear-gradient(45deg, #f3ec78, #af4261);
+            /* Gradient border */
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        
+
         .amount {
             font-size: 16px;
             margin: 20px 0;
             color: #343a40;
         }
-        
+
         .validity {
-    font-size: 12px;
-    color: #000000; /* Changing color to black */
-    /* Other properties remain unchanged */
-}
+            font-size: 12px;
+            color: #000000;
+            /* Changing color to black */
+            /* Other properties remain unchanged */
+        }
 
         .pay-button {
             display: none;
@@ -80,14 +84,16 @@
             font-size: 16px;
         }
 
-       @media screen and (max-width: 768px) {
-    .pay-button {
-        display: none;
-    }
-}
+        @media screen and (max-width: 768px) {
+            .pay-button {
+                display: none;
+            }
+        }
 
         
     </style>
+
+
 </head>
 
 <?php
@@ -121,43 +127,44 @@ if (($current_time - $created_at) > (5 * 60)) {
 
 
 $slq_p = "SELECT * FROM orders where order_id='$order_id'";
-$res_p = getXbyY($slq_p);    
+$res_p = getXbyY($slq_p);
 $amount = $res_p[0]['amount'];
 $user_token = $res_p[0]['user_token'];
 $redirect_url = $res_p[0]['redirect_url'];
 $cxrkalwaremark = $res_p[0]['byteTransactionId'];  //remark
-$cxrbytectxnref=$res_p[0]['paytm_txn_ref'];
+$cxrbytectxnref = $res_p[0]['paytm_txn_ref'];
 
-if($redirect_url==''){
-$redirect_url='https://qr.webupipay.online/';    
+if ($redirect_url == '') {
+    $redirect_url = 'https://munmunmaharana.in/payment/';
 }
 
 
 
-    
+
 $slq_p = "SELECT * FROM paytm_tokens where user_token='$user_token'";
-        $res_p = getXbyY($slq_p);    
- $upi_id = $res_p[0]['Upiid']; //upi id from paytm tokens
- 
- $slq_p = "SELECT * FROM users where user_token='$user_token'";
-        $res_p = getXbyY($slq_p);    
- $unitId=$res_p[0]['name'];
- 
- $asdasd23="COMPU".rand(1111,9999).time().rand(1,100);
-$orders="upi://pay?pa=$upi_id&am=$amount&pn=$unitId&tn=$asdasd23&tr=$cxrbytectxnref";
+$res_p = getXbyY($slq_p);
+$upi_id = $res_p[0]['Upiid']; //upi id from paytm tokens
+
+$slq_p = "SELECT * FROM users where user_token='$user_token'";
+$res_p = getXbyY($slq_p);
+$unitId = $res_p[0]['name'];
+
+$asdasd23 = "COMPU" . rand(1111, 9999) . time() . rand(1, 100);
+$orders = "upi://pay?pa=$upi_id&am=$amount&pn=$unitId&tn=$asdasd23&tr=$cxrbytectxnref";
 $qr_code_url = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" . urlencode($orders);
- 
- ?>
+
+?>
+
 <body>
     <div class="qr-wrapper">
         <div class="qr-container">
-            <div class="qr-title"><?php echo $unitId?></div>
+            <div class="qr-title"><?php echo $unitId ?></div>
             <div class="qr-code">
                 <img src="<?php echo $qr_code_url; ?>" alt="QR Code" style="max-width: 100%;">
             </div>
             <div class="amount">Scan to pay ₹ <?php echo number_format($amount, 2); ?></div>
             <button class="pay-button" onclick="payViaUPI()">Pay via UPI App</button>
-             <div class="validity">Valid until: <span id="timeout"></span></div>
+            <div class="validity">Valid until: <span id="timeout"></span></div>
         </div>
     </div>
 
@@ -168,62 +175,70 @@ $qr_code_url = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" 
         }
 
 
-function upiCountdown(elm, minute, second, url) {
-    document.getElementById(elm).innerHTML = minute + ":" + second;
-    startTimer();
+        function upiCountdown(elm, minute, second, url) {
+            document.getElementById(elm).innerHTML = minute + ":" + second;
+            startTimer();
 
-    function startTimer() {
-        var presentTime = document.getElementById(elm).innerHTML;
-        var timeArray = presentTime.split(/[:]+/);
-        var m = timeArray[0];
-        var s = checkSecond((timeArray[1] - 1));
-        if(s == 59){m = m - 1}
-        if(m < 0){
-            Swal.fire({
-              title: 'Oops',
-              text: 'Transaction Timeout!',
-              icon: 'error'
-            });
-            window.location.href = "https://khilaadixpro.shop";
-        }
-        document.getElementById(elm).innerHTML = m + ":" + s;
-        setTimeout(startTimer, 1000);
-    }
+            function startTimer() {
+                var presentTime = document.getElementById(elm).innerHTML;
+                var timeArray = presentTime.split(/[:]+/);
+                var m = timeArray[0];
+                var s = checkSecond((timeArray[1] - 1));
+                if (s == 59) {
+                    m = m - 1
+                }
+                if (m < 0) {
+                    Swal.fire({
+                        title: 'Oops',
+                        text: 'Transaction Timeout!',
+                        icon: 'error'
+                    });
+                    window.location.href = "https://munmunmaharana.in/payment/";
+                }
+                document.getElementById(elm).innerHTML = m + ":" + s;
+                setTimeout(startTimer, 1000);
+            }
 
-    function checkSecond(sec) {
-        if (sec < 10 && sec >= 0) { sec = "0" + sec };
-        if (sec < 0) { sec = "59" };
-        return sec;
-    }
-}
-
-upiCountdown("timeout", 5, 0, location.href);
-
-function check() {
-    $.ajax({
-        type: 'post',
-        url: 'https://qr.webupipay.online/order3/payment-status',
-        data: 'byte_order_status=<?php echo $cxrkalwaremark?>',
-        success: function (data) {
-            if(data == 'success'){
-                Swal.fire({
-                  title: '',
-                  text: 'Your Payment Received Successfully 👍 Please Wait',
-                  icon: 'success'
-                });
-                window.location.href = "<?php echo $redirect_url?>";
-            } else if(data == 'FAILURE'){
-                Swal.fire({
-                  title: '',
-                  text: 'Your Payment Was Failed',
-                  icon: 'error'
-                });
-                window.location.href = "<?php echo $redirect_url?>";
+            function checkSecond(sec) {
+                if (sec < 10 && sec >= 0) {
+                    sec = "0" + sec
+                };
+                if (sec < 0) {
+                    sec = "59"
+                };
+                return sec;
             }
         }
-    });    
-}
-setInterval(check, 5000);
-</script>
+
+        upiCountdown("timeout", 5, 0, location.href);
+
+        function check() {
+            $.ajax({
+                type: 'post',
+                url: 'https://munmunmaharana.in/payment/order3/payment-status',
+                data: 'byte_order_status=<?php echo $cxrkalwaremark ?>',
+                success: function(data) {
+                    if (data == 'success') {
+                        Swal.fire({
+                            title: '',
+                            text: 'Your Payment Received Successfully 👍 Please Wait',
+                            icon: 'success'
+                        });
+
+                        window.location.href = "<?php echo $redirect_url ?>&order_id=<?php echo $order_id ?>";
+                    } else if (data == 'FAILURE') {
+                        Swal.fire({
+                            title: '',
+                            text: 'Your Payment Was Failed',
+                            icon: 'error'
+                        });
+                        window.location.href = "<?php echo $redirect_url ?>&order_id=<?php echo $order_id ?>";
+                    }
+                }
+            });
+        }
+        setInterval(check, 5000);
+    </script>
 </body>
+
 </html>

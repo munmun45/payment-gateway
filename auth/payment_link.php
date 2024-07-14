@@ -15,7 +15,7 @@ if(isset($_POST['number'])){
 
 	    
 // Set the API endpoint URL
-$api_url = 'https://qr.webupipay.online/api/create-order';
+$api_url = 'https://munmunmaharana.in/payment/api/create-order';
 
 
 $to = $userdata['user_token'];
@@ -28,10 +28,10 @@ $o ="QRPAY" . rand(0000,99999);
 
 $data = array(
     'customer_mobile' => $_POST['number'],
-    'user_token' => $to,
-    'amount' => $_POST['amount'],
+    'user_token' => 'c6e38bc6bcea1962180df2e962e462fe',
+    'amount' => '1',
     'order_id' => $o,
-    'redirect_url' => 'https://qr.webupipay.online',
+    'redirect_url' => 'https://munmunmaharana.in/payment',
     'remark1' => 'Online Payment Request',
     'remark2' => 'QR PAY',
 );
@@ -60,11 +60,11 @@ if (curl_errno($ch)) {
     if ($result && isset($result['status'])) {
         if ($result['status'] === true) {
         $link = $result['result']['payment_url'];    
-        $url = "https://qr.webupipay.online/link.php?url=$link";
+        $url = "https://munmunmaharana.in/payment/link.php?url=$link";
         $response = file_get_contents($url);
         $data = json_decode($response, true);
        
-       // {"status":200,"url":"https://qr.webupipay.online/link.php?pay=kdbhj9"}
+       // {"status":200,"url":"https://munmunmaharana.in/payment/link.php?pay=kdbhj9"}
         
        $url_pay = $data['url'];   
             

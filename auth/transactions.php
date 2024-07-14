@@ -48,7 +48,7 @@ echo "<td>" . htmlspecialchars($row['byteTransactionId'], ENT_QUOTES, 'UTF-8') .
 echo "<td>" . htmlspecialchars($row['create_date'], ENT_QUOTES, 'UTF-8') . "</td>";
 
         ?>
-        <td class="badge badge-info" style="width:70px;"><?php echo htmlspecialchars($row['method']); ?></td>
+        <td ><?php echo htmlspecialchars($row['method']); ?></td>
         <?php
         echo "<td>" . htmlspecialchars($row['gateway_txn'], ENT_QUOTES, 'UTF-8') . "</td>";
         ?>

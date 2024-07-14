@@ -6,20 +6,29 @@ $startDate = date("Y-m-d");
 $lastday = date("Y-m-d", strtotime("-1 day"));
 
 
-///Today Collaction Fetch Amount
-$sql = "SELECT SUM(amount) AS total_amount FROM reports WHERE status = 'success' AND user_token = '$to' AND date BETWEEN '$startDate 00:00:00' AND '$startDate 23:59:59'";
+///Today Collation Fetch Amount
+$sql = "SELECT SUM(amount) AS total_amount FROM reports WHERE status = 'TXN_SUCCESS' AND date BETWEEN '$startDate 00:00:00' AND '$startDate 23:59:59'";
 
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
-
 $totalAmount = $row['total_amount'];
-//Last Day Collaction Fetch Amount
-$sl = "SELECT SUM(amount) AS total_amount FROM reports WHERE status = 'success' AND user_token = '$to' AND date BETWEEN '$lastday 00:00:00' AND '$lastday 23:59:59'";
+
+//Last Day Collation Fetch Amount
+$sl = "SELECT SUM(amount) AS total_amount FROM reports WHERE status = 'TXN_SUCCESS' AND date BETWEEN '$lastday 00:00:00' AND '$lastday 23:59:59'";
 
 $result = $conn->query($sl);
 $row = $result->fetch_assoc();
 
 $total_last = $row['total_amount'];
+
+
+//Life Time Collation Fetch Amount
+$sl_f = "SELECT SUM(amount) AS total_amount FROM reports WHERE status = 'TXN_SUCCESS' ";
+
+$result = $conn->query($sl_f);
+$row = $result->fetch_assoc();
+
+$total_life_time = $row['total_amount'];
 
 ?>
 
@@ -47,33 +56,6 @@ $total_last = $row['total_amount'];
 
 
 
-
-
-
-
-
-				<!--------rohit
-							<div class="col-md-3">
-								<div class="card card-stats">
-									<div class="card-body ">
-										<div class="row">
-											<div class="col-4">
-												<div class="icon-big text-center">
-													<i class="la la-shekel text-dark"></i>
-												</div>
-											</div>
-											<div class="col-8 d-flex align-items-center ">
-												<div class="numbers">
-													<p class="card-category text-dark">Gateway Health</p>
-													<h4 class="card-title">OK</h4>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							<!-------/div>
-							
-				<!-----rohit start------->
 				<div class="col-md-3">
 					<div class="card card-stats">
 						<div class="card-body ">
@@ -93,6 +75,8 @@ $total_last = $row['total_amount'];
 						</div>
 					</div>
 				</div>
+
+
 				<div class="col-md-3">
 					<div class="card card-stats">
 						<div class="card-body ">
@@ -112,6 +96,29 @@ $total_last = $row['total_amount'];
 						</div>
 					</div>
 				</div>
+
+
+				<div class="col-md-3">
+					<div class="card card-stats">
+						<div class="card-body ">
+							<div class="row">
+								<div class="col-4">
+									<div class="icon-big text-center">
+										<i class="la la-hourglass-end text-primary"></i>
+									</div>
+								</div>
+								<div class="col-8 d-flex align-items-center">
+									<div class="numbers">
+										<p class="card-category text-primary">Life Time Collection </p>
+										<h4 class="card-title"><b>₹<?php echo $total_life_time ?></b></h4>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
 				<div class="col-md-3">
 					<div class="card card-stats">
 						<div class="card-body">
@@ -124,50 +131,33 @@ $total_last = $row['total_amount'];
 								<div class="col-8 d-flex align-items-center">
 									<div class="numbers">
 										<p class="card-category text-info">Plan Expire Date</p>
-										<h4 class="card-title"><?php echo htmlspecialchars($userdata['expiry'], ENT_QUOTES, 'UTF-8'); ?></h4>
+										<h4 class="card-title"><?php echo htmlspecialchars($userdata['expiry'], ENT_QUOTES, 'UTF-8'); ?> :
+
+										<?php
+
+										$expiryDate = $userdata['expiry'];
+										$today = date('Y-m-d'); // Get today's date in 'YYYY-MM-DD' format
+
+										if (strtotime($expiryDate) >= strtotime($today)) {
+											$status = "Active";
+										} else {
+											$status = "Expired";
+										}
+
+										?>
+
+										<?php echo htmlspecialchars($status, ENT_QUOTES, 'UTF-8'); ?></h4>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3 hand" onclick="location='subscription'">
-					<div class="card card-stats">
-						<div class="card-body ">
-							<div class="row">
-								<div class="col-4">
-									<div class="icon-big text-center">
-										<i class="la la-cart-plus text-info"></i>
-									</div>
-								</div>
 
-								<?php
-
-								$expiryDate = $userdata['expiry'];
-								$today = date('Y-m-d'); // Get today's date in 'YYYY-MM-DD' format
-
-								if (strtotime($expiryDate) >= strtotime($today)) {
-									$status = "Active";
-								} else {
-									$status = "Expired";
-								}
-
-
-
-								?>
-
-
-								<div class="col-8 d-flex align-items-center">
-									<div class="numbers">
-										<p class="card-category text-info">Plan Purchased</p>
-										<h4 class="card-title"><?php echo htmlspecialchars($status, ENT_QUOTES, 'UTF-8'); ?></h4>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				
 			</div>
+
+
 			<div class="row row-card-no-pd">
 				<div class="col-md-12">
 
@@ -195,6 +185,7 @@ $total_last = $row['total_amount'];
 
 
 									if ($query_run) {
+										
 										$serialNumber = 1;
 										while ($row = mysqli_fetch_assoc($query_run)) {
 
@@ -204,8 +195,7 @@ $total_last = $row['total_amount'];
 											echo "<td>" . htmlspecialchars($serialNumber, ENT_QUOTES, 'UTF-8') . "</td>";
 											echo "<td>" . htmlspecialchars($row['customer_mobile'], ENT_QUOTES, 'UTF-8') . "</td>";
 											echo "<td>" . htmlspecialchars($row['create_date'], ENT_QUOTES, 'UTF-8') . "</td>";
-								?>
-											<?php
+								
 											echo "<td>" . htmlspecialchars($row['order_id'], ENT_QUOTES, 'UTF-8') . "</td>";
 											echo "<td>₹" . htmlspecialchars($row['amount'], ENT_QUOTES, 'UTF-8') . "</td>";
 
@@ -225,13 +215,16 @@ $total_last = $row['total_amount'];
 											$serialNumber++;
 											echo "</tr>";
 										}
+
 									} else {
 										echo "Error in query: ";
-										//echo "Error in query: " . mysqli_error($conn); 
+										
 									}
 								}
 
-								//admin ke lie echo 
+								
+
+
 
 								else {
 									$token = $userdata['user_token'];
@@ -251,9 +244,8 @@ $total_last = $row['total_amount'];
 											echo  "<td>" . htmlspecialchars($row['transactionId'], ENT_QUOTES, 'UTF-8') . "</td>";
 											echo "<td>" . htmlspecialchars($row['date'], ENT_QUOTES, 'UTF-8') . "</td>";
 
-											?>
-											<td class="badge badge-dark" style="width:70px;">UPI</td>
-								<?php
+											?><td class="badge badge-dark" style="width:70px;">UPI</td><?php
+
 											echo "<td>" . htmlspecialchars($row['order_id'], ENT_QUOTES, 'UTF-8') . "</td>";
 											echo "<td>" . htmlspecialchars($row['transactionId'], ENT_QUOTES, 'UTF-8') . "</td>";
 											echo "<td>" . htmlspecialchars($row['order_id'], ENT_QUOTES, 'UTF-8') . "</td>";

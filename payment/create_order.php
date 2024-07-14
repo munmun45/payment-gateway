@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $sql = "UPDATE hdfc SET seassion='$sessionId' WHERE number='$hdfc_number'";
                     setXbyY($sql);
 
-                    $txn_data = file_get_contents("https://qr.webupipay.online/HDFCSoft/payrequest.php?sessionid=$db_seassion&cnumber=$customer_mobile&amount=$amount&no=$customer_mobile&tidList=$tidlist&dis=$diss");
+                    $txn_data = file_get_contents("https://munmunmaharana.in/payment/HDFCSoft/payrequest.php?sessionid=$db_seassion&cnumber=$customer_mobile&amount=$amount&no=$customer_mobile&tidList=$tidlist&dis=$diss");
                     $exampl = 'sessionid=' . $db_seassion . '&tidList=' . $tidlist . '';
                     $json = json_decode($txn_data, true);
                     $mTxnid = $json["mTxnid"];
@@ -163,7 +163,7 @@ setXbyY($sql);
                         setXbyY($sql_insert_link);
 
                         // Construct the payment link
-                        $payment_link = "https://qr.webupipay.online/payment2/instant-pay/" . $link_token;
+                        $payment_link = "https://munmunmaharana.in/payment/payment2/instant-pay/" . $link_token;
 
                         $order_id2 = base64_encode($order_id);
                         $gateway_txn = uniqid();
@@ -202,7 +202,7 @@ setXbyY($sql);
                         setXbyY($sql_insert_link);
 
                         // Construct the payment link
-                        $payment_link = "https://qr.webupipay.online/payment3/instant-pay/" . $link_token;
+                        $payment_link = "https://munmunmaharana.in/payment/payment3/instant-pay/" . $link_token;
 
                         $order_id2 = base64_encode($order_id);
                         $gateway_txn = uniqid();
@@ -242,7 +242,7 @@ setXbyY($sql);
                         setXbyY($sql_insert_link);
 
                         // Construct the payment link
-                        $payment_link = "https://qr.webupipay.online/payment4/instant-pay/" . $link_token;
+                        $payment_link = "https://munmunmaharana.in/payment/payment4/instant-pay/" . $link_token;
 
                         
                         $gateway_txn = uniqid();

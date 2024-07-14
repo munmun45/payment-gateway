@@ -1,6 +1,6 @@
 <?php
 // URL of the PHP page
-$url = 'https://qr.webupipay.online/api/create-order';
+$url = 'https://munmunmaharana.in/payment/api/create-order';
 
 // Data to be sent in the POST request
 $data = array(
@@ -8,7 +8,7 @@ $data = array(
     'user_token' => '1ae0b12c53a3223c9ab631f71744bcea',
     'amount' => '1',
     'order_id' => '123456'.time(),
-    'redirect_url' => 'https://qr.webupipay.online/success',
+    'redirect_url' => 'https://munmunmaharana.in/payment/success.php?id=', //replace what value you provide in email and personal db
     'remark1' => 'test1',
     'remark2' => 'test2',
 );

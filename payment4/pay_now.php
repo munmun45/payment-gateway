@@ -125,7 +125,7 @@ $cxrkalwaremark = $res_p[0]['byteTransactionId'];  //remark
 //$cxrbytectxnref=$res_p[0]['paytm_txn_ref'];
 
 if($redirect_url==''){
-$redirect_url='https://qr.webupipay.online/';    
+$redirect_url='https://munmunmaharana.in/payment/';    
 }
 
 
@@ -158,7 +158,7 @@ $qr_code_url = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" 
         </div>
     </div>
     
- <form id="paymentForm" action="https://qr.webupipay.online/instantpay/bharatpe/payment-verify" method="post">
+ <form id="paymentForm" action="https://munmunmaharana.in/payment/instantpay/bharatpe/payment-verify" method="post">
     <!-- Other input fields -->
     <input type="hidden" name="TransactionId" value="<?php echo $cxrkalwaremark; ?>">
     <input type="hidden" name="redirect_url" value="<?php echo $redirect_url; ?>">
@@ -187,7 +187,7 @@ function upiCountdown(elm, minute, second, url) {
               text: 'Transaction Timeout!',
               icon: 'error'
             });
-            window.location.href = "https://qr.webupipay.online";
+            window.location.href = "https://munmunmaharana.in/payment";
         }
         document.getElementById(elm).innerHTML = m + ":" + s;
         setTimeout(startTimer, 1000);

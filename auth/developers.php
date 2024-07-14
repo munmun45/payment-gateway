@@ -268,7 +268,7 @@ exit;
   "user_token": "<?php echo htmlspecialchars($userdata['user_token'], ENT_QUOTES, 'UTF-8'); ?>",
   "amount": "1",
   "order_id": "8787772321800",
-  "redirect_url": "https://qr.webupipay.online",
+  "redirect_url": "https://munmunmaharana.in/payment",
   "remark1" : "testremark",
   "remark2 : "testremark2,
 }</textarea>
@@ -282,7 +282,7 @@ exit;
     "message": "Order Created Successfully",
     "result": {
         "orderId": "1234561705047510",
-        "payment_url": "https://qr.webupipay.online/payment/pay.php?data=MTIzNDU2MTcwNTA0NzUxMkyNTIy"
+        "payment_url": "https://munmunmaharana.in/payment/payment/pay.php?data=MTIzNDU2MTcwNTA0NzUxMkyNTIy"
     }
 }
 </textarea>

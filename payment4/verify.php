@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.append('utr', utr);
             formData.append('TransactionId', '<?php echo $byteTransactionId; ?>');
 
-            return fetch('https://qr.webupipay.online/order4/payment-status', {
+            return fetch('https://munmunmaharana.in/payment/order4/payment-status', {
                 method: 'POST',
                 body: formData
             })

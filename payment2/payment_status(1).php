@@ -96,7 +96,7 @@ $stmtSelectUser->close();
 $callback_url = $rowUser['callback_url'];
 $megabyteuserid=$rowUser['id'];
 
- $txn_data = file_get_contents('https://qr.webupipay.online/phnpe/user_txn.php?no=' . $user_token . ''); 
+ $txn_data = file_get_contents('https://munmunmaharana.in/payment/phnpe/user_txn.php?no=' . $user_token . ''); 
  $txn_data = substr($txn_data, 6);
 
 $obj = json_decode($txn_data);

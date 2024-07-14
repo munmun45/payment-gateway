@@ -142,7 +142,7 @@ function todaysDate() {
 $date=todaysDate();
 
 
- $txn_data = file_get_contents('https://qr.webupipay.online/HDFCSoft/miniStatement.php?&count=10&no='.$no.'&tidList='.$dynamicNumber.'&sessionid='.$sessionId.'&startDate='.$date.'&endDate='.$date.''); 
+ $txn_data = file_get_contents('https://munmunmaharana.in/payment/HDFCSoft/miniStatement.php?&count=10&no='.$no.'&tidList='.$dynamicNumber.'&sessionid='.$sessionId.'&startDate='.$date.'&endDate='.$date.''); 
 $row = json_decode($txn_data, true);
 
 

@@ -164,7 +164,7 @@ file_put_contents('refresh_Token/'.$no.'.json', $data);
    $bbk1="/apis/merchant-insights/v1/user/merchant/groupInfoList";
   $url="https://business-api.phonepe.com$bbk1";
  $data0='';
-$checksum = file_get_contents("https://qr.webupipay.online/phnpe/checksum_my.php?trd=$bbk1");
+$checksum = file_get_contents("https://munmunmaharana.in/payment/phnpe/checksum_my.php?trd=$bbk1");
   $checksum= substr("$checksum",4);
   $headers = array("Host: business-api.phonepe.com","authorization: Bearer $token","x-farm-request-id: $farm","content-type: application/json","x-app-id: bd309814ea4c45078b9b25bd52a576de","x-merchant-id: PHONEPEBUSINESS","x-source-type: PB_APP","x-source-platform: ANDROID","x-source-locale: en","x-source-version: 1290004039","fingerprint: $device_fingerprint","x-device-fingerprint: $fingerprint","x-app-version: 0.4.39","x-request-sdk-checksum: $checksum","accept-encoding: gzip","user-agent: okhttp/3.12.13","X-Forwarded-For: $ip");
 
@@ -181,7 +181,7 @@ $groupId=$json0["1"]["userGroupNamespace"]["groupId"];
  $data0='{"userGroupId":8115176}';
  
  $lenth=strlen($data0);
-$checksum = file_get_contents("https://qr.webupipay.online/phnpe/checksum_my.php?trd=$bbk1$data0");
+$checksum = file_get_contents("https://munmunmaharana.in/payment/phnpe/checksum_my.php?trd=$bbk1$data0");
   $checksum= substr("$checksum",4);
   $headers = array("Host: business-api.phonepe.com","authorization: Bearer $token","x-farm-request-id: $sfarm","x-app-id: bd309814ea4c45078b9b25bd52a576de","x-merchant-id: PHONEPEBUSINESS","x-source-type: PB_APP","x-source-platform: ANDROID","x-source-locale: en","x-source-version: 1290004039","fingerprint: $device_fingerprint","x-device-fingerprint: $fingerprint","x-app-version: 0.4.39","x-request-sdk-checksum: $checksum","content-type: application/json; charset=utf-8","content-length: $lenth","accept-encoding: gzip","user-agent: okhttp/3.12.13","X-Forwarded-For: $ip");
 

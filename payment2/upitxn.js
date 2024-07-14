@@ -1,7 +1,7 @@
 function TxnStatus(){
 	
    $.ajax({ 
-            url: "https://qr.webupipay.online/order2/payment-status",
+            url: "https://munmunmaharana.in/payment/order2/payment-status",
 			type: "POST", 
             success: function(result) {
 			var obj = JSON.parse(result);

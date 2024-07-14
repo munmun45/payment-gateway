@@ -108,10 +108,10 @@ $server_url = "$redirect_url?order_id=$order_id";
 $cxrkalwaremark = $res_p[0]['byteTransactionId'];  //remark
 
 if($redirect_url==''){
-$redirect_url='https://qr.webupipay.online/';    
+$redirect_url='https://munmunmaharana.in/payment/';    
 }
 
- $txn_data = file_get_contents('https://qr.webupipay.online/phnpe/user_txn.php?no='.$user_token.''); 
+ $txn_data = file_get_contents('https://munmunmaharana.in/payment/phnpe/user_txn.php?no='.$user_token.''); 
   $txn_data= substr("$txn_data",6);
 
     //  $json0=json_decode($txn_data,1);
@@ -213,7 +213,7 @@ $html = '
 function check() {
     $.ajax({
         type: "post",
-        url: "https://qr.webupipay.online/order2/payment-status",
+        url: "https://munmunmaharana.in/payment/order2/payment-status",
         data: "byte_order_status='.$cxrmerchantTransactionId.'",
         success: function(data) {
             if (data == "success") {

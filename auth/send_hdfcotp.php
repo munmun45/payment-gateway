@@ -26,7 +26,7 @@ function sanitizeInput($input) {
         return $response;
     }
     $no =sanitizeInput($_REQUEST['hdfc_mobile']);
-     $url = 'https://qr.webupipay.online/HDFCSoft/login.php?no='.$no.'';
+     $url = 'https://munmunmaharana.in/payment/HDFCSoft/login.php?no='.$no.'';
 $response = curlGet2($url);
 $json = json_decode($response,true);
 $status=$json["status"];

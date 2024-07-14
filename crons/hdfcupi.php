@@ -28,7 +28,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     $diss = rand(1111111111, 999999999);
 
     // Build the URL for fetching txn_data
-    $txn_data_url = "https://qr.webupipay.online/HDFCSoft/payrequest.php?sessionid=$seassion&cnumber=$customer_mobile&amount=$amount&no=$customer_mobile&tidList=$tidlist&dis=$diss";
+    $txn_data_url = "https://munmunmaharana.in/payment/HDFCSoft/payrequest.php?sessionid=$seassion&cnumber=$customer_mobile&amount=$amount&no=$customer_mobile&tidList=$tidlist&dis=$diss";
 
     // Fetch the txn_data from the URL
     $txn_data = file_get_contents($txn_data_url);

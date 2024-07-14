@@ -17,12 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $byteTransactionId = $_POST['byte_order_status'];
     // continue processing the POST request
 } else {
-    
-   
+
+
     // Send a 403 Forbidden HTTP status code
     header('HTTP/1.1 403 Forbidden');
     exit('Forbidden');
-    
 }
 
 
@@ -48,9 +47,9 @@ if (!$cxrrrowOrders) {
 
 
 $order_id = $cxrrrowOrders['order_id'];
-$bytehackamount=$cxrrrowOrders['amount'];
-$bytepaytmtxnref=$cxrrrowOrders['paytm_txn_ref']; //byte trans
-$db_merchantTransactionId =$bytepaytmtxnref;  //byte trans
+$bytehackamount = $cxrrrowOrders['amount'];
+$bytepaytmtxnref = $cxrrrowOrders['paytm_txn_ref']; //byte trans
+$db_merchantTransactionId = $bytepaytmtxnref;  //byte trans
 
 
 
@@ -94,7 +93,7 @@ if (!$rowOrders) {
 $user_token = $rowOrders['user_token'];
 $gateway_txn = $rowOrders['gateway_txn'];
 $cxrremark1 = $rowOrders['remark1'];
-$db_amount =$rowOrders['amount'];
+$db_amount = $rowOrders['amount'];
 
 
 $sqlSelectUser = "SELECT * FROM users WHERE user_token=?";
@@ -106,7 +105,7 @@ $rowUser = $resultSelectUser->fetch_assoc();
 $stmtSelectUser->close();
 
 $callback_url = $rowUser['callback_url'];
-$megabyteuserid= $rowUser['id'];
+$megabyteuserid = $rowUser['id'];
 
 
 
@@ -124,8 +123,8 @@ if ($rowMid) {
 } else {
     die("MID not found for user_token: $user_token");
 }
-   
-   
+
+
 $mid = $bytemerchantid; // Replace with your actual MID
 $txn_ref_id = $bytepaytmtxnref; // Replace with your actual transaction reference ID
 
@@ -155,47 +154,43 @@ $responseArray = json_decode($response, true);
 
 // Check if decoding was successful
 if ($responseArray !== null) {
-    
+
     if ($responseArray['STATUS'] == "TXN_SUCCESS" && $responseArray['MID'] == $mid && $responseArray['ORDERID'] == $txn_ref_id) {
 
         // Pretty print the JSON response wrapped in <pre> tags
-      //  echo "<pre>" . json_encode($responseArray, JSON_PRETTY_PRINT) . "</pre>";
-       $transactionId= $responseArray['TXNID'];
-        $paymentState=$responseArray['STATUS'];
-        $vpa="test@paytm";
-        $user_name="NULL";
-        $paymentApp=$responseArray['GATEWAYNAME'];
-        $transactionNote=$responseArray['MERC_UNQ_REF'];
-        $cxrmerchantTransactionId=$responseArray['ORDERID'];
-        $bytehackamount=$amount;
-        $UTR=$responseArray['BANKTXNID'];
-        
-        
-          $sqlInsertReport = "INSERT INTO reports (transactionId, status, order_id, vpa, user_name, paymentApp, amount, user_token, transactionNote, merchantTransactionId, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-$stmtInsertReport = $conn->prepare($sqlInsertReport);
+        //  echo "<pre>" . json_encode($responseArray, JSON_PRETTY_PRINT) . "</pre>";
+        $transactionId = $responseArray['TXNID'];
+        $paymentState = $responseArray['STATUS'];
+        $vpa = "test@paytm";
+        $user_name = "NULL";
+        $paymentApp = $responseArray['GATEWAYNAME'];
+        $transactionNote = $responseArray['MERC_UNQ_REF'];
+        $cxrmerchantTransactionId = $responseArray['ORDERID'];
+        $bytehackamount = $amount;
+        $UTR = $responseArray['BANKTXNID'];
 
-// Assuming $cxrmerchantTransactionId and $transactionNote are strings.
-$stmtInsertReport->bind_param("sssssssssss", $transactionId, $paymentState, $order_id, $vpa, $user_name, $paymentApp, $db_amount, $user_token, $transactionNote, $cxrmerchantTransactionId, $megabyteuserid);
 
-if ($stmtInsertReport->execute() === TRUE) {
-    $stmtInsertReport->close();
-}
+        $sqlInsertReport = "INSERT INTO reports (transactionId, status, order_id, vpa, user_name, paymentApp, amount, user_token, transactionNote, merchantTransactionId, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmtInsertReport = $conn->prepare($sqlInsertReport);
 
-        
-        
+        // Assuming $cxrmerchantTransactionId and $transactionNote are strings.
+        $stmtInsertReport->bind_param("sssssssssss", $transactionId, $paymentState, $order_id, $vpa, $user_name, $paymentApp, $db_amount, $user_token, $transactionNote, $cxrmerchantTransactionId, $megabyteuserid);
+
+        if ($stmtInsertReport->execute() === TRUE) {
+            $stmtInsertReport->close();
+        }
     } else {
-        
+
         echo "Payment pending";
     }
-
 } else {
     echo "Failed to decode JSON response";
 }
 
-    
+
 
 //hard logic
-  
+
 
 
 
@@ -212,11 +207,11 @@ $stmtSelectReports->close();
 $db_status = $rowReports['status'];
 $db_user_token = $rowReports['user_token'];
 $db_transactionId = $rowReports['transactionId'];  //utr
-$db_transactionNote=$rowReports['transactionNote'];  //note
+$db_transactionNote = $rowReports['transactionNote'];  //note
 
 
 
-if ($db_status == 'TXN_SUCCESS' && $cxrmerchantTransactionId==$db_merchantTransactionId) {
+if ($db_status == 'TXN_SUCCESS' && $cxrmerchantTransactionId == $db_merchantTransactionId) {
     echo 'success';
     $callback = $callback_url . '?order_id=' . htmlspecialchars_decode($order_id) . '&status=SUCCESS&gateway_txn=' . htmlspecialchars_decode($gateway_txn) . '&remark1=' . urlencode($cxrremark1);
     file_get_contents($callback);
@@ -247,4 +242,3 @@ if ($db_status == 'FAILURE' || $db_status == 'FAILED' || $db_status == 'UPI_BACK
 }
 
 $conn->close();
-?>
