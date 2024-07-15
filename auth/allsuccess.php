@@ -5,7 +5,7 @@ include "header.php";
 <div class="main-panel">
     <div class="content">
         <div class="container-fluid">
-            <h4 class="page-title">Transactions</h4>
+            <h4 class="page-title">Success Transactions</h4>
             <div class="row row-card-no-pd">
                 <div class="col-md-12">
                     <div class="table-responsive">

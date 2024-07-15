@@ -19,7 +19,7 @@
 <style>
 body{
   font-family: 'Inter', sans-serif;
-  background: #f2f3f8 !important;
+  background: #02162b !important;
 }
 
 a{

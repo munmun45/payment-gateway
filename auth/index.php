@@ -25,7 +25,7 @@
 <style>
   body {
     font-family: 'Inter', sans-serif;
-    background: #f2f3f8 !important;
+    background: #02162b !important;
   }
 
   a {
@@ -59,27 +59,9 @@
 
 
 
-  <!-- Modal -->
-  <div class="modal fade" id="disclaimer" tabindex="-1" aria-labelledby="Disclaimer" aria-hidden="">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="Disclaimer">❗ Disclaimer Notice</h5>
-        </div>
-        <div class="modal-body">
-          <p>This gateway does not provide any Payment Gateway services, UPI Accounts, or UPI Merchant Accounts.</p>
-          <p>We only provide an API to Generate a QR code for your UPI ID.</p>
-          <p>We are not involved in any kind of transaction. Please read our terms and conditions before using our service.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-dark" onclick="$('body').html('');">Leave</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="container">
+
+  <div class="container" style="    height: 94vh !important;" >
 
     <section class="h-100 ">
       <div class="container py-5 h-100">
@@ -259,39 +241,22 @@
   </div>
 
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom">
-    <div class="container-fluid container">
-      <a class="nav-item text-light" href="#" style="text-decoration: auto;">@ All Copyright Reeved By MUNMUN</a>
+  <?php require("../footer.php") ?>
 
-      <div class="d-flex" style="gap: 10px;">
-        <a class="nav-item text-light" href="#" style="text-decoration: auto;">T & C</a>
-        <p class="text-light">/</p>
-        <a class="nav-item text-light" href="#" style="text-decoration: auto;">Privacy Policy</a>
-      </div>
-    </div>
-  </nav>
 
 
 
 </body>
-<!--<script src="assets/js/core/jquery.3.2.1.min.js"></script>-->
-<!--<script src="assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>-->
-<!--<script src="assets/js/core/popper.min.js"></script>-->
-<!--<script src="assets/js/core/bootstrap.min.js"></script>-->
-<!--<script src="assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>-->
-<!--<script src="assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>-->
-<!--<script src="assets/js/plugin/jquery-mapael/jquery.mapael.min.js"></script>-->
-<!--<script src="assets/js/plugin/jquery-mapael/maps/world_countries.min.js"></script>-->
-<!--<script src="assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>-->
-<!--<script src="assets/js/ready.min.js"></script>-->
-<script>
-  $(document).ready(function() {
-    $('#disclaimer').modal({
-      backdrop: 'static',
-      keyboard: false
-    })
-    $("#disclaimer").modal("show");
-  });
-</script>
+<script src="assets/js/core/jquery.3.2.1.min.js"></script>
+<script src="assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+<script src="assets/js/plugin/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="assets/js/plugin/jquery-mapael/maps/world_countries.min.js"></script>
+<script src="assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="assets/js/ready.min.js"></script>
+
 
 </html>

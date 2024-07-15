@@ -4,7 +4,7 @@
     <!-- Include the SweetAlert CDN link -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body style="background-color: #f2f3f8;" >
+<body style="background-color: #02162b;" >
 
 <?php
 include "config.php";

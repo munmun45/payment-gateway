@@ -15,7 +15,7 @@ if (isset($_SESSION['username'])) {
 
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<title>Upi Payment Gateway : MUNMUN</title>
+		<title>Upi Payment Gateway By MUNMUN</title>
 		<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
 		<!-- <link rel="icon" href="assets/img/logos.png" type="image/*" /> -->
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -67,7 +67,7 @@ if (isset($_SESSION['username'])) {
 		.table-sm td,
 		.table th {
 			font-size: 0.98458em;
-			border-color: #ebedf2 !important;
+			border-color: #70ba65 !important;
 			padding: 0.4375rem !important;
 		}
 
@@ -252,11 +252,12 @@ if (isset($_SESSION['username'])) {
 
 	<body>
 		<div class="wrapper">
-			<div class="main-header">
+			<div class="main-header" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.6);">
 				<div class="logo-header">
 
 					<a href="dashboard" class="logo">
 						<!-- <img src="assets/img/logos.png" height="31" alt="logo" /> -->
+						PAYMENT GATEWAY
 					</a>
 
 					<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
@@ -290,17 +291,18 @@ if (isset($_SESSION['username'])) {
 										<div class="user-box">
 											<div class="u-img"><img src="assets/img/k2.png" alt="user"></div>
 											<div class="u-text">
-												<h4><?php echo $userdata['name']; ?></h4>
-												<p class="text-muted"><?php echo $userdata['email']; ?></p><a href="profile" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
+												<h4 style="    color: #02162b !important; font-weight: 900;"><?php echo $userdata['name']; ?></h4>
 											</div>
 										</div>
 									</li>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="profile"><i class="ti-user"></i> My Profile</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="changepassword"><i class="ti-settings"></i> Change Password</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="logout"><i class="fa fa-power-off"></i> Logout</a>
+
+									<a class="dropdown-item" href="profile" style="color: #02162b !important;     padding: 0.8rem 0.8rem; border-top: 1px solid #02162b; margin-top: 18px; "><i class="ti-user"></i> My Profile</a>
+
+
+									<a class="dropdown-item" href="changepassword" style="color: #02162b !important;     padding: 0.8rem 0.8rem; border-top: 1px solid #02162b; "><i class="ti-settings"></i> Change Password</a>
+
+
+									<a class="dropdown-item" href="logout" style="color: #02162b !important;     padding: 0.8rem 0.8rem; border-top: 1px solid #02162b; "><i class="fa fa-power-off"></i> Logout</a>
 								</ul>
 								<!-- /.dropdown-user -->
 							</li>
@@ -340,7 +342,7 @@ if (isset($_SESSION['username'])) {
 						</div>
 					</div>
 					<ul class="nav">
-						<li class="nav-item active">
+						<li class="nav-item ">
 							<a href="dashboard">
 								<i class="la la-dashboard"></i>
 								<p>Dashboard</p>
@@ -388,7 +390,7 @@ if (isset($_SESSION['username'])) {
 							<li class="nav-item">
 								<a href="allsuccess.php">
 									<i class="la la-bank"></i>
-									<p>All Success Transactions</p>
+									<p>Success Transactions</p>
 									<!-- <span class="badge badge-primary">New</span> -->
 								</a>
 							</li>
@@ -431,13 +433,19 @@ if (isset($_SESSION['username'])) {
 						</li>
 
 						<li class="nav-item update-pro">
-							<button class="bg-dark" onclick="location='logout'">
+							<button onclick="location='logout'">
 								<i class="la la-sign-out"></i>
 								<p>Log Out</p>
 							</button>
 						</li>
+
+						<p style="position: fixed; bottom: -11px; background-color: #00283a; width: 258px; padding: 10px 20px;     font-size: 12px;" >@ Copyright Reeved By MUNMUN</p>
+
+
 					</ul>
 				</div>
+
+
 			</div>
 		<?php
 	} else {

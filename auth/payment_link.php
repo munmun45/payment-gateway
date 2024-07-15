@@ -5,7 +5,7 @@ include "header.php";
 				<div class="content">
 					<div class="container-fluid">
 
-						<h4 class="page-title">Create Online Payment Link</h4>	
+						<h4 class="page-title">Payment Link Generate</h4>	
 										
 						<div class="row row-card-no-pd">							
 							<div class="col-md-12">
