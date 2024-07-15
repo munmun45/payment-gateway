@@ -67,7 +67,7 @@ if (isset($_SESSION['username'])) {
 		.table-sm td,
 		.table th {
 			font-size: 0.98458em;
-			border-color: #70ba65 !important;
+			border-color: #02162b !important;
 			padding: 0.4375rem !important;
 		}
 
@@ -408,13 +408,13 @@ if (isset($_SESSION['username'])) {
 									<!-- <span class="badge badge-primary">New</span> -->
 								</a>
 							</li>
-							<!-- <li class="nav-item">
-								<a href="subscription">
+							<li class="nav-item">
+								<a href="subscription" style="background-color: #02162b;">
 									<i class="la la-shopping-cart"></i>
-									<p>Subscription</p>
-									<span class="badge badge-info">Buy Plan</span>
+									<p>Renewal</p>
+									<span class="badge badge-danger">Buy Plan</span>
 								</a>
-							</li> -->
+							</li>
 						<?php } ?>
 						<li class="nav-item">
 							<a href="developers">

@@ -108,7 +108,7 @@ $total_life_time = $row['total_amount'];
 								</div>
 								<div class="col-8 d-flex align-items-center">
 									<div class="numbers">
-										<p class="card-category text-info">Plan Expire Date</p>
+										<p class="card-category text-info">Plan Expire Date </p>
 										<h4 class="card-title"><?php echo htmlspecialchars($userdata['expiry'], ENT_QUOTES, 'UTF-8'); ?> :
 											<?php
 											$expiryDate = $userdata['expiry'];
@@ -117,6 +117,8 @@ $total_life_time = $row['total_amount'];
 											?>
 											<?php echo htmlspecialchars($status, ENT_QUOTES, 'UTF-8'); ?>
 										</h4>
+
+										
 									</div>
 								</div>
 							</div>
