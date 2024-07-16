@@ -114,7 +114,7 @@ if (isset($_SESSION['username'])) {
 			background-size: contain;
 			border: 1px solid rgba(0, 0, 0, 0.25);
 			appearance: none;
-			color-adjust: exact;
+			/* color-adjust: exact; */
 		}
 
 		.form-check-input[type=checkbox] {
