@@ -49,6 +49,7 @@ $total_life_time = $row['total_amount'];
 									<th>Date Time</th>
 									<th>Order ID</th>
 									<th>Merchant Order ID</th>
+									<th>UTR / Ref No</th>
 									<th>Amount</th>
 									<th>Status</th>
 								</tr>
@@ -62,7 +63,7 @@ $total_life_time = $row['total_amount'];
 
 								if ($userdata['role'] == 'User') {
 									$token = $userdata['user_token'];
-									$query = "SELECT `id`, `create_date`, `customer_mobile`, `order_id`, `amount`, `status`,`paytm_txn_ref` FROM `orders` WHERE `user_token` = ? AND `order_id` = '$search' ORDER BY `create_date` DESC";
+									$query = "SELECT `id`, `create_date`, `customer_mobile`, `order_id`, `amount`, `status`,`utr` ,`paytm_txn_ref` FROM `orders` WHERE `user_token` = ? AND `order_id` = '$search' ORDER BY `create_date` DESC";
 									$stmt = $conn->prepare($query);
 									$stmt->bind_param("s", $token);
 									$stmt->execute();
@@ -75,6 +76,7 @@ $total_life_time = $row['total_amount'];
 										echo "<td>" . htmlspecialchars($row['create_date'], ENT_QUOTES, 'UTF-8') . "</td>";
 										echo "<td>" . htmlspecialchars($row['order_id'], ENT_QUOTES, 'UTF-8') . "</td>";
 										echo "<td>" . htmlspecialchars($row['paytm_txn_ref'], ENT_QUOTES, 'UTF-8') . "</td>";
+										echo "<td>" . htmlspecialchars($row['utr'], ENT_QUOTES, 'UTF-8') . "</td>";
 										echo "<td>₹" . htmlspecialchars($row['amount'], ENT_QUOTES, 'UTF-8') . "</td>";
 										$status = htmlspecialchars($row['status'], ENT_QUOTES, 'UTF-8');
 										$statusClass = ($status == "SUCCESS") ? "badge badge-primary" : (($status == "PENDING") ? "badge badge-info" : "badge badge-danger");
