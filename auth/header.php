@@ -270,13 +270,12 @@ if (isset($_SESSION['username'])) {
 				<nav class="navbar navbar-header navbar-expand-lg">
 					<div class="container-fluid">
 
-						<form class="navbar-left navbar-form nav-search mr-md-3" action="">
+						<form class="navbar-left navbar-form nav-search mr-md-3" action="./search.php" method="get" >
 							<div class="input-group">
-								<input type="text" id="utr_number" placeholder="Search By UTR Number" class="form-control">
+								<input type="text" name="search" placeholder="Search By UTR Number" class="form-control">
 								<div class="input-group-append">
-									<span class="input-group-text hand" onclick="utr_search($('#utr_number').val())">
-										<i class="la la-search search-icon"></i>
-									</span>
+									
+									<button class="input-group-text hand"  type="submit"><i class='la la-search search-icon'></i></button>
 								</div>
 							</div>
 						</form>
@@ -325,7 +324,7 @@ if (isset($_SESSION['username'])) {
 							</a>
 							<div class="clearfix"></div>
 
-							<div class="collapse in" id="collapseExample" aria-expanded="true" style="">
+							<div class="collapse in" id="collapseExample" aria-expanded="true" >
 								<ul class="nav">
 									<li>
 										<a href="profile">
