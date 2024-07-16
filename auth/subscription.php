@@ -53,11 +53,11 @@ include "header.php"; ?>
 
                             <div class="card-footer">
                                 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                                    <input type="text" name="mobile" value="<?php echo $userdata['mobile']; ?>">
-                                    <input type="text" name="email" value="<?php echo $userdata['email']; ?>">
-                                    <input type="text" name="user_token" value="<?php echo $userdata['user_token']; ?>">
-                                    <input type="text" name="amount" value="<?php echo $plan['price']; ?>">
-                                    <input type="text" name="duration" value="<?php echo $plan['duration']; ?>">
+                                    <input type="hidden" name="mobile" value="<?php echo $userdata['mobile']; ?>">
+                                    <input type="hidden" name="email" value="<?php echo $userdata['email']; ?>">
+                                    <input type="hidden" name="user_token" value="<?php echo $userdata['user_token']; ?>">
+                                    <input type="hidden" name="amount" value="<?php echo $plan['price']; ?>">
+                                    <input type="hidden" name="duration" value="<?php echo $plan['duration']; ?>">
                                     <button name="upigate" class="btn btn-success btn-block">Buy Now</button>
                                 </form>
                             </div>
