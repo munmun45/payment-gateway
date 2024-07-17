@@ -106,6 +106,7 @@ include "header.php";
                                     <th>Mobile Number</th>
                                     <th>Date Time</th>
                                     <th>Order ID</th>
+                                    <th>UTR / Ref No</th>
                                     <th>Amount</th>
                                     <th>Status</th>
 
@@ -117,7 +118,7 @@ include "header.php";
                                     $token = $userdata['user_token'];
 
 
-                                    $query = "SELECT `create_date`, `gateway_txn`, `customer_mobile`, `method`, `utr`, `byteTransactionId`, `order_id`, `amount`, `status` FROM `orders` WHERE user_token = '$token' AND remark1 = 'Online Payment Request' ORDER BY `id` desc LIMIT 20";
+                                    $query = "SELECT `create_date`, `gateway_txn`, `customer_mobile`, `method`, `utr`, `byteTransactionId`, `order_id`, `amount`,  `utr`, `status` FROM `orders` WHERE user_token = '$token' AND remark1 = 'Online Payment Request' ORDER BY `id` desc LIMIT 20";
                                     $query_run = mysqli_query($conn, $query);
 
 
@@ -129,10 +130,8 @@ include "header.php";
                                             echo "<tr>";
                                             echo "<td>" . htmlspecialchars($row['customer_mobile'], ENT_QUOTES, 'UTF-8') . "</td>";
                                             echo "<td>" . htmlspecialchars($row['create_date'], ENT_QUOTES, 'UTF-8') . "</td>";
-
-                                ?>
-                                            <?php
                                             echo "<td>" . htmlspecialchars($row['order_id'], ENT_QUOTES, 'UTF-8') . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['utr'], ENT_QUOTES, 'UTF-8') . "</td>";
                                             echo "<td>₹" . htmlspecialchars($row['amount'], ENT_QUOTES, 'UTF-8') . "</td>";
 
 

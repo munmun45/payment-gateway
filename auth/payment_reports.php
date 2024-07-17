@@ -16,7 +16,7 @@ include "header.php";
                                     <th>Payment App Name</th>
                                     <th>Date Time</th>
                                     <th>Gateway Txn</th>
-                                    <th>Bank RRN</th>
+                                    <th>UTR / Ref No</th>
                                     <th>Order ID</th>
                                     <th>Amount</th>
                                     <th>Status</th>

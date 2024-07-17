@@ -18,7 +18,7 @@ include "header.php";
                                     <th>Date Time</th>
                                     <th>Merchant</th>
                                     <th>Gateway Txn</th>
-                                    <th>Bank RRN</th>
+                                    <th>UTR / Ref No</th>
                                     <th>Order ID</th>
                                     <th>Amount</th>
                                     <th>Status</th>

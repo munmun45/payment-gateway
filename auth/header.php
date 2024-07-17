@@ -270,9 +270,9 @@ if (isset($_SESSION['username'])) {
 				<nav class="navbar navbar-header navbar-expand-lg">
 					<div class="container-fluid">
 
-						<form class="navbar-left navbar-form nav-search mr-md-3" action="./search.php" method="get" >
+						<form class="navbar-left navbar-form nav-search mr-md-5" action="./search.php" method="get" style="width: 350px;" >
 							<div class="input-group">
-								<input type="text" name="search" placeholder="Search By UTR Number" class="form-control">
+								<input type="text" name="search" placeholder="Search By UTR / Number / Order Id" class="form-control">
 								<div class="input-group-append">
 									
 									<button class="input-group-text hand"  type="submit"><i class='la la-search search-icon'></i></button>
