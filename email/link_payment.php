@@ -56,10 +56,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $mail->Port = 587;
         $mail->SMTPDebug = 0;
         $mail->SMTPAuth = true;
-        $mail->Username = 'info@munmunmaharana.in';
-        $mail->Password = 'dfgdsgb#2UGF41';
+        $mail->Username = 'smtpinfo@youremail.in';
+        $mail->Password = 'smtpPass';
 
-        $mail->setFrom('info@munmunmaharana.in', 'UPI PAYMENT SUCCESSFUL');
+        $mail->setFrom('smtpinfo@youremail.in', 'UPI PAYMENT SUCCESSFUL');
         $mail->addAddress($email);
 
         $mail->isHTML(true);

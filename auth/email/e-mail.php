@@ -18,9 +18,9 @@ $mail = new PHPMailer(true);
 
 
 
-$dsn = 'mysql:host=localhost;dbname=u965631061_payment';
-$username = 'u965631061_payment';
-$password = '7*GLkvKyQVmm';
+$dsn = 'mysql:host=localhost;dbname=root_db';
+$username = 'root_username';
+$password = 'root_password';
 
 
 
@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
                 
 
-                $message = "
+                    $message = "
                     
                         <p>
 
@@ -120,10 +120,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     $mail->Port = 587;
                     $mail->SMTPDebug = 0;
                     $mail->SMTPAuth = true;
-                    $mail->Username = 'info@munmunmaharana.in';
-                    $mail->Password = 'dfgdsgb#2UGF41';
+                    $mail->Username = 'smtpinfo@youremail.in';
+                    $mail->Password = 'smtpPass';
 
-                    $mail->setFrom('info@munmunmaharana.in', 'Renewal Payment Getaway');
+                    $mail->setFrom('smtpinfo@youremail.in', 'Renewal Payment Getaway');
                     $mail->addAddress($email);
 
                     $mail->isHTML(true);

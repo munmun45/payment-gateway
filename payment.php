@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'user_token' => 'c393b66a64b0aef50903f183392db230',
         'amount' => $price,
         'order_id' => rand(10000, 99999).time(),
-        'redirect_url' => 'https://munmunmaharana.in/payment/success.php?name='.$name.'&number='.$number.'&email='.$email.'&product_name='.$product_name.'&product_id='.$product_id.'&price='.$price.'',
+        'redirect_url' => 'https://munmunmaharana.in/payment/email/e-mail.php?name='.$name.'&number='.$number.'&email='.$email.'&product_name='.$product_name.'&product_id='.$product_id.'&price='.$price.'',
         'remark1' => 'test1',
         'remark2' => 'test2',
     );
