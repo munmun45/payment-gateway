@@ -72,7 +72,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
         echo "
             <script>
-                localStorage.setItem('alert_Email', '1');
                 window.location.href='../success.php';
             </script>
         ";
@@ -83,8 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
         echo "
             <script>
-                localStorage.setItem('alert_Email', '2');
-                window.location.href='../index.php';
+                window.location.href='../error.php';
             </script>
         ";
         exit;

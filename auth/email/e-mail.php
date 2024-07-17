@@ -145,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
                     echo "
                         <script>
-                            window.location.href='../index.php';
+                            window.location.href='../error.php';
                         </script>
                     ";
                     exit;
