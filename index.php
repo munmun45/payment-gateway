@@ -8,8 +8,10 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <title>Hello, world!</title>
+
+    <title>MUNMUN's Payment Getway</title>
 </head>
 
 <body style="background-color: #02162b; color: white;">
@@ -23,26 +25,24 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="background-color: #00283a !important;">
         <div class="container-fluid container">
-            <a class="navbar-brand" href="#">MUNMUN</a>
+            <a class="navbar-brand" href="../">MUNMUN</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item">
-                        <a class="nav-link " href="#">Home</a>
+                        <a class="nav-link " href="../">Home</a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Domination</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact / Help</a>
+                        <a class="nav-link" href="../contact.php">Contact / Help</a>
                     </li>
                 </ul>
                 <div class="d-flex" style="gap: 10px;">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#donateModal">
+                        DONATE <i class="fas fa-heart"></i>
+                    </button>
                     <a href="./auth/index" type="button" class="btn btn-primary ">Login</a>
                     <a href="./auth/register" class="btn btn-success ml-1">Register</a>
                 </div>
@@ -65,6 +65,41 @@
         <br>
         <br>
         <br>
+
+
+        <div class="modal fade" id="donateModal" tabindex="-1" aria-labelledby="donateModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="donateModalLabel" style="color: black;">Donate Form</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" style="color: black;">
+                        <form action="./donate.php" method="POST">
+                            <div class="mb-3">
+                                <label for="name" class="form-label" style="color: black;">Name *</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label" style="color: black;">Email</label>
+                                <input type="email" class="form-control" id="email" name="email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="price" class="form-label" style="color: black;">Amount *</label>
+                                <input type="number" class="form-control" id="price" name="price" required>
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" id="message" name="message" rows="3" placeholder="Write Message" ></textarea>
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary">Donate Now</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
 
 
