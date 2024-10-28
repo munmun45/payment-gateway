@@ -5,7 +5,7 @@ $url = 'https://munmunmaharana.in/payment/api/create-order';
 // Data to be sent in the POST request
 $data = array(
     'customer_mobile' => '1234567890',
-    'user_token' => '4e7c8efaca2c3eb7b0e3bea21b99755c',
+    'user_token' => 'c6e38bc6bcea1962180df2e962e462fe',
     'amount' => '1',
     'order_id' => '123456'.time(),
     'redirect_url' => 'https://munmunmaharana.in/payment/success.php?id=', //replace what value you provide in email and personal db

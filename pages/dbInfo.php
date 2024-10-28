@@ -17,7 +17,7 @@ function connect_database() {
 
 // Database configuration
 define('DB_HOST', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'payment_gateway');
+define('DB_USERNAME', 'root_db');
+define('DB_PASSWORD', 'root_password');
+define('DB_NAME', 'root_username');
 ?>

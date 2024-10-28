@@ -1,7 +1,7 @@
 FIND ALL & REPLACE :
 
 1. https://munmunmaharana.in/payment => Your Directory
-2. 4e7c8efaca2c3eb7b0e3bea21b99755c  => Your Api Token
+2. c6e38bc6bcea1962180df2e962e462fe  => Your Api Token
 
 3. root_db                           => Your dbName
 4. root_username                     => Your dbUserName
